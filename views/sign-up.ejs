@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <form action="" method="POST">
+      <label for="userName">Username</label>
+      <input
+        name="userName"
+        placeholder="username@email.com"
+        type="text"
+        value="<%= typeof userName !== 'undefined' ? userName : '' %>"
+      />
+      <label for="displayName">Display Name</label>
+      <input
+        name="displayName"
+        placeholder="Display Name"
+        type="text"
+        value="<%= typeof displayName !== 'undefined' ? displayName : '' %>"
+      />
+      <label for="password">Password</label>
+      <input
+        name="password"
+        type="password"
+        value="<%= typeof password !== 'undefined' ? password : '' %>"
+      />
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        name="confirmPassword"
+        type="password"
+        value="<%= typeof confirmPassword !== 'undefined' ? confirmPassword : '' %>"
+      />
+      <button>Sign Up</button>
+    </form>
+    <% if (errors){%>
+    <ul>
+      <% for (error of errors){ %>
+      <li><%= error.msg %></li>
+      <% } %>
+    </ul>
+    <%}%>
+  </body>
+</html>
