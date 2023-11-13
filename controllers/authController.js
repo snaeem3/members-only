@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const User = require('../models/user');
 
 // Returns true if the username is unique, false otherwise
@@ -19,8 +20,8 @@ exports.signUpPOST = [
     .trim()
     .notEmpty()
     .escape(),
-  body('userName', 'User Name must not be empty').trim().notEmpty().escape(),
-  body('userName')
+  body('username', 'User Name must not be empty').trim().notEmpty().escape(),
+  body('username')
     .trim()
     .custom(async (value, { req }) => {
       if (!(await isUserNameUnique(value))) {
@@ -50,14 +51,14 @@ exports.signUpPOST = [
 
         const user = new User({
           displayName: req.body.displayName,
-          userName: req.body.userName,
+          userName: req.body.username,
           password: hash,
         });
 
         if (!errors.isEmpty()) {
           res.render('sign-up', {
             title: 'Sign-Up',
-            userName: req.body.userName,
+            username: req.body.username,
             displayName: req.body.displayName,
             password: req.body.password,
             confirmPassword: req.body.confirmPassword,
@@ -71,3 +72,16 @@ exports.signUpPOST = [
     });
   }),
 ];
+
+exports.loginGET = asyncHandler(async (req, res, next) => {
+  res.render('log-in', { title: 'Log In', errors: [] });
+});
+
+exports.loginPOST = asyncHandler(async (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/success',
+    failureRedirect: '/failure',
+    failureMessage: true,
+    failureFlash: true,
+  })(req, res, next);
+});

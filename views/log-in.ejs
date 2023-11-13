@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Log In</h1>
+    <form action="/log-in" method="POST">
+      <label for="username">Username</label>
+      <input
+        name="username"
+        placeholder="username@email.com"
+        type="text"
+        value="<%= typeof userName !== 'undefined' ? userName : '' %>"
+      />
+      <label for="password">Password</label>
+      <input
+        name="password"
+        type="password"
+        value="<%= typeof password !== 'undefined' ? password : '' %>"
+      />
+      <button type="submit">Log In</button>
+    </form>
+    <% if (errors){%>
+    <ul>
+      <% for (error of errors){ %>
+      <li><%= error.msg %></li>
+      <% } %>
+    </ul>
+    <%}%> <% if (typeof error != 'undefined' && error){%>
+    <p><%= error %></p>
+    <%}%>
+  </body>
+</html>
