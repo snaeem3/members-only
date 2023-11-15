@@ -51,7 +51,7 @@ exports.signUpPOST = [
 
         const user = new User({
           displayName: req.body.displayName,
-          userName: req.body.username,
+          username: req.body.username,
           password: hash,
         });
 
@@ -74,13 +74,13 @@ exports.signUpPOST = [
 ];
 
 exports.loginGET = asyncHandler(async (req, res, next) => {
-  res.render('log-in', { title: 'Log In', errors: [] });
+  res.render('log-in', { title: 'Log In' });
 });
 
 exports.loginPOST = asyncHandler(async (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/success',
-    failureRedirect: '/failure',
+    successRedirect: '/',
+    failureRedirect: '/log-in',
     failureMessage: true,
     failureFlash: true,
   })(req, res, next);

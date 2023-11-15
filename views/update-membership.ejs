@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Update Membership</h1>
+    <form action="" method="POST">
+      <label for="membershipCode">Enter the secret <%= type %> passcode</label>
+      <input
+        name="membershipCode"
+        placeholder="Secret Passcode"
+        type="password"
+        value=""
+      />
+      <button type="submit">Become a <%= type %></button>
+      <% if (typeof errors !== 'undefined' && errors){%>
+      <ul>
+        <% for (let error of errors){ %>
+        <li><%= error.msg %></li>
+        <% } %>
+      </ul>
+      <%}%>
+    </form>
+  </body>
+</html>

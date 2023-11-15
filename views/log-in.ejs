@@ -22,14 +22,12 @@
       />
       <button type="submit">Log In</button>
     </form>
-    <% if (errors){%>
+    <% if (typeof errors !== 'undefined' && errors){%>
     <ul>
-      <% for (error of errors){ %>
+      <% for (let error of errors){ %>
       <li><%= error.msg %></li>
       <% } %>
     </ul>
-    <%}%> <% if (typeof error != 'undefined' && error){%>
-    <p><%= error %></p>
     <%}%>
   </body>
 </html>

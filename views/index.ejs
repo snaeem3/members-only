@@ -9,6 +9,11 @@
     <p>Welcome to <%= title %></p>
     <% if (user) {%>
     <p>Hello <%= user.displayName%></p>
-    <%}%>
+    <p>Membership Status: <%= user.memberStatus%></p>
+    <% if (user.memberStatus === 'none') {%>
+    <a href="/users/become-member"><button>Become a Member</button></a>
+    <%} else if (user.memberStatus ==='member'){%>
+    <a href="/users/become-admin"><button>Become an Admin</button></a>
+    <%}%> <%}%>
   </body>
 </html>
