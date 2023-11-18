@@ -9,6 +9,7 @@ exports.becomeMemberGET = asyncHandler(async (req, res, next) => {
     res.render('update-membership', {
       title: 'Become a Member',
       type: 'Member',
+      user: req.user,
     });
   }
 });
@@ -18,6 +19,7 @@ exports.becomeMemberPOST = asyncHandler(async (req, res, next) => {
     res.render('update-membership', {
       title: 'Become a Member',
       type: 'Member',
+      user: req.user,
       errors: [{ msg: 'Incorrect member passcode' }],
     });
   } else {

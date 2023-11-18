@@ -23,12 +23,14 @@ exports.newMessagePOST = [
       res.render('new-message-form', {
         title: 'New Message',
         messageText: req.body.messageText,
+        user: req.user,
         errors: [{ msg: 'You must be a member or admin to create a message' }],
       });
     } else if (!errors.isEmpty()) {
       res.render('new-message-form', {
         title: 'New Message',
         messageText: req.body.messageText,
+        user: req.user,
         errors: errors.array(),
       });
     } else {

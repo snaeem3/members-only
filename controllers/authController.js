@@ -11,7 +11,7 @@ const isUserNameUnique = async (username) => {
 };
 
 exports.signUpGET = asyncHandler(async (req, res, next) => {
-  res.render('sign-up', { title: 'Sign-Up', errors: [] });
+  res.render('sign-up', { title: 'Sign-Up', user: req.user, errors: [] });
 });
 
 exports.signUpPOST = [
@@ -62,6 +62,7 @@ exports.signUpPOST = [
             displayName: req.body.displayName,
             password: req.body.password,
             confirmPassword: req.body.confirmPassword,
+            user: req.user,
             errors: errors.array(),
           });
         } else {
@@ -74,7 +75,7 @@ exports.signUpPOST = [
 ];
 
 exports.loginGET = asyncHandler(async (req, res, next) => {
-  res.render('log-in', { title: 'Log In' });
+  res.render('log-in', { title: 'Log In', user: req.user });
 });
 
 exports.loginPOST = asyncHandler(async (req, res, next) => {
