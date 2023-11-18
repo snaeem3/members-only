@@ -15,6 +15,7 @@
       placeholder="Your message"
       name="messageText"
       required="true"
+      value="<%= typeof messageText !== 'undefined' ? messageText : '' %>"
     ></textarea>
     <button type="submit">Submit</button>
   </form>

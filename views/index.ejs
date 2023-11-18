@@ -7,13 +7,24 @@
   <p>Hello <%= user.displayName%></p>
   <p>Membership Status: <%= user.memberStatus%></p>
   <% if (user.memberStatus === 'none') {%>
+  <p>Become a member to view authors, dates, and create messages</p>
   <a href="/users/become-member"><button>Become a Member</button></a>
   <%} else if (user.memberStatus ==='member'){%>
+  <p>Become an admin to delete messages</p>
   <a href="/users/become-admin"><button>Become an Admin</button></a>
   <%}%> <%}%>
   <ul class="messages-list">
     <% for (let i = 0; i < messages.length; i++) { %>
-    <li><%= messages[i].messageText %></li>
+    <li class="message">
+      <p class="message-text"><%= messages[i].messageText %></p>
+      <% if (user && user.memberStatus !== 'none') {%>
+      <p class="author"><%= messages[i].authorDisplayName%></p>
+      <p class="date">
+        <%= messages[i].date.toLocaleString('en-US', { year: 'numeric', month:
+        'short', day: 'numeric' })%>
+      </p>
+      <%}%>
+    </li>
     <% } %>
   </ul>
 </main>
