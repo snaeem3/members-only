@@ -6,7 +6,7 @@
   --border-radius-default: 0.75rem;
   --primary-color: #2c3e50;
   --primary-color-dark: #1c2833;
-  --secondary-color: #ff9797;
+  --secondary-color: #fff597;
   --shade-color: #494949da;
   --color-shadow: grey;
 }
@@ -196,11 +196,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(
-    45deg,
-    rgb(199, 181, 173),
-    var(--secondary-color)
-  );
+  background: linear-gradient(45deg, rgb(240, 225, 22), var(--secondary-color));
   min-height: 100vh; /* Keeps footer at bottom of page */
 }
 
@@ -221,14 +217,35 @@ nav ul {
   align-items: center;
 }
 
+nav a {
+  text-decoration: none;
+  padding: var(--section-padding);
+  border-radius: var(--border-radius-default);
+  transition-duration: 0.2;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 main {
   padding: var(--section-padding);
 }
 
 .messages-list {
   padding: var(--section-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .message {
   padding: var(--section-padding);
+  border-radius: var(--border-radius-default);
+  border: solid 1px white;
+  text-align: center;
+}
+
+.error {
+  color: red;
 }

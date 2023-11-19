@@ -2,7 +2,7 @@
 <nav>
   <ul>
     <li><a href="/">Home</a></li>
-    <% if (user) { %>
+    <% if (typeof user !== 'undefined' && user) { %>
     <li><a href="/message/new">Create Message</a></li>
     <li><a href="/log-out">Log Out</a></li>
     <%} else {%>

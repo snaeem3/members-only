@@ -15,7 +15,7 @@
   <%}%> <%}%>
   <ul class="messages-list">
     <% for (let i = 0; i < messages.length; i++) { %>
-    <li class="message">
+    <li class="message box-shadow">
       <p class="message-text"><%= messages[i].messageText %></p>
       <% if (user && user.memberStatus !== 'none') {%>
       <p class="author"><%= messages[i].authorDisplayName%></p>

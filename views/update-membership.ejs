@@ -14,9 +14,17 @@
     <% if (typeof errors !== 'undefined' && errors){%>
     <ul>
       <% for (let error of errors){ %>
-      <li><%= error.msg %></li>
+      <li class="error"><%= error.msg %></li>
       <% } %>
     </ul>
     <%}%>
   </form>
+  <h2 class="hint">Hint:</h2>
+  <% if (type === 'Member') {%>
+  <a href="https://github.com/snaeem3/members-only"
+    >github.com/snaeem3/members-only</a
+  >
+  <%} else {%>
+  <p class="hint-text">Chiquita Banana Chiquita Banana</p>
+  <%}%>
 </main>
