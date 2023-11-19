@@ -9,7 +9,6 @@ const User = require('../models/user');
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    console.log(req.user);
     const allMessages = await Message.find({}).exec();
     // Fetch user information for each message's author
     const messagesWithAuthors = await Promise.all(

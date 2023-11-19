@@ -24,5 +24,9 @@
     <li><%= error.msg %></li>
     <% } %>
   </ul>
+  <%}%> <% if (errorMessage && errorMessage.length > 0){%>
+  <p class="error-message"><%= errorMessage %></p>
+  <%}%> <% if (typeof error !== 'undefined' && error){%>
+  <p class="error"><%= error %></p>
   <%}%>
 </main>

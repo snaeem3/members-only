@@ -23,7 +23,11 @@
         <%= messages[i].date.toLocaleString('en-US', { year: 'numeric', month:
         'short', day: 'numeric' })%>
       </p>
-      <%}%>
+      <% if (user.memberStatus === 'admin') {%>
+      <form method="POST" action="<%= `/message/${messages[i]._id}/delete` %>">
+        <button type="submit">Delete</button>
+      </form>
+      <%}}%>
     </li>
     <% } %>
   </ul>

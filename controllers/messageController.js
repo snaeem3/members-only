@@ -39,3 +39,8 @@ exports.newMessagePOST = [
     }
   }),
 ];
+
+exports.deleteMessagePOST = asyncHandler(async (req, res, next) => {
+  await Message.findByIdAndDelete(req.params.id);
+  res.redirect('/');
+});

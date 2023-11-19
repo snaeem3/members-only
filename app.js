@@ -81,6 +81,7 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   console.log(req.flash('error'));
+  res.locals.errorMessage = req.flash('error');
   next();
 });
 

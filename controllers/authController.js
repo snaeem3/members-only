@@ -75,14 +75,19 @@ exports.signUpPOST = [
 ];
 
 exports.loginGET = asyncHandler(async (req, res, next) => {
-  res.render('log-in', { title: 'Log In', user: req.user });
+  res.render('log-in', {
+    title: 'Log In',
+    user: req.user,
+    errorMessage: res.locals.errorMessage,
+    error: req.flash('error'),
+  });
 });
 
-exports.loginPOST = asyncHandler(async (req, res, next) => {
+exports.loginPOST = [
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/log-in',
     failureMessage: true,
     failureFlash: true,
-  })(req, res, next);
-});
+  }),
+];
